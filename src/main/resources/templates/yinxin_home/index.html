@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" th:href="@{/images/yx_log.png}" type="image/x-icon">
     <link rel="stylesheet" th:href="@{/bootstrap/css/fontawesome-all.min.css}">
     <link rel="stylesheet" th:href="@{/bootstrap/css/index.css}">
     <link rel="stylesheet" th:href="@{/bootstrap/css/footer.css}">
@@ -39,7 +40,7 @@
                                 list=result.alldata;
                                 console.log(list);
                                 for(var a=0;a<list.length;a++){
-                                    $('#yewu').append("<div class=\"col-md-3 col-sm-6\">"
+                                    $('#yewu').append("<div class=\"col-xs-3\">"
                                 +"<div class=\"box\">"
                                 +"<img class="+"img-clip image-clip-5" + " src="+list[a].imgurl+">"
                                 +"<div class=\"box-content\">"
@@ -65,7 +66,7 @@
                         list=result.alldata;
                         console.log(list);
                         for(var a=0;a<list.length;a++){
-                            $('#hezuo').append("<div class=\"col-md-3 col-sm-6\">"
+                            $('#hezuo').append("<div class=\"col-xs-3\">"
                                 +"<div class=\"box\">"
                                 +"<img class="+"img-clip image-clip-5" + " src="+list[a].imgurl+">"
                                 +"<div class=\"box-content\">"
@@ -101,14 +102,14 @@
         <div id="lunbo">
         </div>
     </div>
-    <div class="container">
+    <div class="neirong">
         <div id="yewu-title">核心业务</div>
         <div class="row" id="yewu">
         </div>
     </div>
-    <div class="container">
+    <div class="neirong">
         <div id="hezuo-title">合作伙伴</div>
-        <div class="rows" id="hezuo">
+        <div class="row" id="hezuo">
         </div>
     </div>
     <div class="footer">
@@ -141,6 +142,10 @@
             <span>位置：</span><span>四川·成都·武侯区·人民南路四段</span><br>
             <span>地址：</span><span>嘉云台-乙栋16楼A座</span><br>
             <span>电话：</span><span>028-8559 5020</span><br>
+        </div>
+        <div class="erweima">
+            <img th:src="@{/images/1.jpg}" width="50%" alt="">
+            <p>微信公众号</p>
         </div>
     </div>
     <p class="shenming">©银信(成都)金融服务外包有限公司 Copyright(C)2019-2020</p>

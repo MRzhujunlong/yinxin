@@ -1,7 +1,9 @@
+@charset "utf-8";
 *{
     margin: 0;
     padding: 0;
 }
+
 a{
     text-decoration: none;
     color: aliceblue;
@@ -14,7 +16,7 @@ a:hover{
 ul{
     list-style: none;
 }
-@charset "utf-8";
+
 .demo{
 	padding: 2em 0;
 }
@@ -48,7 +50,7 @@ ul{
 	height: auto;
 	transition: all 0.5s ease;
 	-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+	clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
 }
 .box:hover img{
 	opacity: 0.5;
@@ -123,7 +125,8 @@ ul{
 	.box .title{ font-size: 20px; }
 }
 .nei-rong{
-	margin: 5% 10%;
+	padding: 5% 10%;
+	width: 1903px;
 }
 .col-md-3>img{
 	margin-top: 10px;
@@ -140,6 +143,7 @@ ul{
 .jiazai{
 	width: 300px;
 	height: 40px;
-	margin: 30px auto;
+	margin: 30px 800px;
 	font-size: 18px;
+
 }

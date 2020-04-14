@@ -1,5 +1,5 @@
 #target { 
-    width: 100%;
+    width: 1903px;
     height: 600px;
     overflow:hidden;
     position:relative;
@@ -20,7 +20,7 @@
 }
 
 #hezuo-title{
-    font-family: 楷体;
+    font-family:楷体;
     font-weight: bold;
     text-align: center;
     font-size: 40px;
@@ -32,19 +32,15 @@
      margin: 0;
      padding: 0;
  }
-.rows{
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
+
  .row>div{
      width: 25%;
      margin: 0 auto;
      margin-top: 40px;
  }
- .container{
-     width: 100%;
-     padding: 0;
+ .neirong{
+     width: 1903px;
+     padding: 20px 240px  20px 240px;
      margin: 0;
      margin-bottom: 50px;
      margin-top: 30px;
