@@ -1,0 +1,34 @@
+.yx_header{
+    display: flex;
+    height: 100px;
+    width: 100%;
+    background-color:#1C2838;
+}
+.yx_header>a{
+    display: flex;
+}
+.yx_logo{
+    width: 135px;
+    margin-left:25%;
+}
+.yx_logo+p{
+    line-height: 100px;
+    width: 220px;
+    text-align: center;
+    font-size: 30px;
+    color: #E8BF22;
+    font-weight: bolder;
+}
+.yx_header ul{
+    margin-left: 40%;
+}
+.yx_header li{
+    float: left;
+}
+.yx_header li>a{
+    display:block; 
+    width:150px;
+    height:30px; 
+    line-height:100px; 
+    text-align:center; 
+}

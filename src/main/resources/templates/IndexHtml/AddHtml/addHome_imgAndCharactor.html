@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加功能-首页的小图片+文字添加</title>
+</head>
+
+<script th:src="@{/jquery/jquery-3.0.0/jquery-3.0.0.js}"></script>
+<body>
+
+
+<div style="margin: 0 auto;width: 300px;height: 40px;font-size: 30px">文字填写</div>
+<form th:action="@{/host/addImg_Charactor}" method="post" enctype="multipart/form-data">
+    <div style="width: 100%;height: 500px;margin-top: 100px">
+        <div style="width: 800px;float: left">
+            输入文字 ：<textarea id="textone" type="text" name="Ttext" style="display: block;width: 800px;height: 300px"></textarea><br>
+            <div style="height: 50px"></div>
+            <input type="hidden" name="Tdistinction" value="home_img"><br>
+            <div style="height: 50px"></div>
+        </div>
+
+        <div class="upload_box" style="float: left;margin-left: 300px">
+            选择图片： <input type="file" name="file" id="file" onchange="verificationPicFile(this)" accept="image/*" /><br> <!--文件上传选择按钮-->
+            <input type="hidden" name="Imgdistinction" value="home_img"><br>
+        </div>
+    </div>
+    <div style="margin: 0 auto"><input type="submit" style="font-size: 20px" value="确认上传"></div>
+</form>
+<h5></h5>
+<div style="width: 100%;height: 100px"></div>
+<div style="width:100px;height: 60px;margin:0 auto"><button onclick="sell()">查看效果图</button></div>
+
+<div style="margin: 0 auto;width: 300px;height: 40px;font-size: 20px">效果图展示</div>
+
+<div style="height: 300px;width: 100%;">
+    <div id="preview" style="width: 300px;height: 300px;float: left">
+        <img style="width: 300px" height="300px" id="imghead" src=""/> <!--图片显示位置-->
+    </div>
+    <div  style="width: 800px;height: 300px;float: left;margin-left: 300px;text-align: center;border: 1px solid red"><p id="texttwo"></p></div>
+
+</div>
+<div style="height: 100px;width: 100%"></div>
+
+<script type="text/javascript">
+    // 选择图片显示
+    function imgChange(obj) {
+//获取点击的文本框
+        var file = document.getElementById("file");
+        var imgUrl = window.URL.createObjectURL(file.files[0]);
+        var img = document.getElementById('imghead');
+        img.setAttribute('src', imgUrl); // 修改img标签src属性值
+    };
+
+    //将文字放到div中展示
+    function sell() {
+        var text = $("#textone").val();
+        $("#texttwo").html(text);
+    }
+
+
+    function verificationPicFile(file) {
+        var fileSize = 0;
+        var fileMaxSize = 1024;//1M
+        var filePath = file.value;
+        if(filePath){
+            fileSize =file.files[0].size;
+            var size = fileSize / 1024;
+            if (size > fileMaxSize) {
+                alert("文件大小不能大于1M！");
+                file.value = "";
+                return false;
+            }else if (size <= 0) {
+                alert("文件大小不能为0M！");
+                file.value = "";
+                return false;
+            }
+        }else{
+            return false;
+        }
+        imgChange(file);
+    }
+
+</script>
+
+
+
+
+</body>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yinxin.yinxinsysteam.MapperInterf.PickAndCharactorMapperInter">
+
+    <insert id="AddHomeImg" parameterType="java.lang.String" >
+      insert into home_img(himg_url) values (#{imgPath})
+    </insert>
+
+    <insert id="addOnlyImg" parameterType="java.lang.String">
+        insert into all_img(img_url,img_distinction) value (#{path},#{img_distinction})
+    </insert>
+
+
+    <insert id="addCharactor" parameterType="java.lang.String">
+        insert into c_charactor(t_text,t_distinction) values (#{text},#{text_distinction})
+    </insert>
+
+    <insert id="addImgReturnId" parameterType="com.yinxin.yinxinsysteam.Entity.IndexImgEntity" useGeneratedKeys="true" keyProperty="Imgid">
+        insert into all_img(img_url,img_distinction) values (#{Imgurl},#{Imgdistinction})
+    </insert>
+
+    <insert id="addText" parameterType="com.yinxin.yinxinsysteam.Entity.Charactor">
+        insert into c_charactor(t_text,img_id,t_distinction) values (#{Ttext},#{Imgid},#{Tdistinction})
+    </insert>
+
+    <select id="FindOnlyText" parameterType="java.lang.String" resultType="java.lang.String">
+        select t_text from c_charactor where t_distinction = #{t_distinction}
+    </select>
+
+    <select id="findAllHomeImg" resultType="com.yinxin.yinxinsysteam.Entity.HomeImg">
+        select * from home_img
+    </select>
+
+    <select id="findAllHomeImgNumber" resultType="java.lang.Integer">
+        select count(*) from home_img
+    </select>
+
+    <select id="limitImgAndCharactorByImg_distinction" resultMap="Img_Charactor">
+        select * from all_img,c_charactor where all_img.img_id = c_charactor.img_id and img_distinction = #{distinction} limit #{page},6
+    </select>
+
+    <select id="getHuobanAndYewu" resultMap="Img_Charactor">
+        select * from all_img,c_charactor where all_img.img_id = c_charactor.img_id and img_distinction = #{distinction}
+    </select>
+
+    <select id="sellAllPage" resultType="java.lang.Integer">
+        select count(*) from all_img where img_distinction = #{img_distinction}
+    </select>
+
+    <select id="getImgUrlByImg_id" parameterType="java.lang.Integer" resultType="java.lang.String">
+        select img_url from all_img where img_id = #{img_id}
+    </select>
+
+
+    <select id="getOnlyImgByDistinction" parameterType="java.lang.String" resultType="com.yinxin.yinxinsysteam.Entity.IndexImgEntity">
+        select * from all_img where img_distinction = #{img_distinction}
+    </select>
+
+    <resultMap type="com.yinxin.yinxinsysteam.Entity.ImgAndCharactorEntity" id="Img_Charactor">
+        <id property="Imgid" column="img_id"></id>
+        <result property="Imgurl" column="img_url"></result>
+        <result property="Imgdistinction" column="img_distinction"></result>
+        <association property="charactor" javaType="com.yinxin.yinxinsysteam.Entity.Charactor">
+            <id property="Tid" column="t_id"></id>
+            <result property="Ttext" column="t_text"></result>
+            <result property="Imgid" column="img_id"></result>
+            <result property="Tdistinction" column="t_distinction"></result>
+        </association>
+    </resultMap>
+
+
+    <delete id="deleteHomeImgById" parameterType="java.lang.Integer">
+        delete from home_img where himg_id = #{homeImgId}
+    </delete>
+
+    <delete id="deleteImgById" parameterType="java.lang.Integer">
+        delete from all_img where img_id = #{imgid}
+    </delete>
+
+    <delete id="deleteCharactorByImg_id" parameterType="java.lang.Integer">
+        delete from  c_charactor where img_id = #{imgid}
+    </delete>
+
+    <delete id="deleteOnlyCharactorById" parameterType="java.lang.Integer">
+        delete from c_charactor where t_id = #{tid}
+    </delete>
+
+
+
+
+
+</mapper>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>根据文字ID删除文字内容</title>
+</head>
+
+<body>
+<div style="font-size: 30px;width: 300px;height: 100px;margin: 0 auto">文字删除</div>
+<form th:action="@{/host/deleteOnlyCharctorById}" method="post">
+    请输入文字ID：<input type="text" name="Tid"><br>
+    <div style="height: 100px"></div>
+    <input type="submit" value="删除">
+</form>
+</body>
+</html>

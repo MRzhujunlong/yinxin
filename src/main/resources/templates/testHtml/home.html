@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+
+<script th:src="@{/layui/layui.js}"></script>
+<link rel="stylesheet"  th:href="@{/layui/css/layui.css}"/>
+
+<body style="background-color: black">
+
+<iframe th:src="@{/test/head}" style="width: 100%;height: 100px"></iframe>
+
+
+
+<div class="layui-carousel" id="test1">
+    <div carousel-item id="forimg">
+    </div>
+</div>
+
+
+
+
+<div><iframe th:src="@{/test/foter}" style="width: 100%;height: 400px"></iframe></div>
+
+</body>
+
+
+<script>    /* 轮播图*/
+    layui.use('carousel', function(){
+        var carousel = layui.carousel;
+        //建造实例
+        carousel.render({
+            elem: '#test1'
+            ,width: '100%' //设置容器宽度
+            ,height:'500px'
+            ,arrow: 'always' //始终显示箭头
+            //,anim: 'updown' //切换动画方式
+        });
+    });
+
+
+    //访问后台获取轮播图
+    function getHome_img() {
+        $.ajax({
+            url:"/yinxin/host/getHomeImg",
+            /*url:"http://localhost:8088/yinxin/host/getHomeImg",*/
+            type:"get",
+            dataType:"json",
+            success:function (data) {
+                console.log(data);
+                for (var i=0;i<data.length;i++){
+                    $("#forimg").append("<div><img style=\"height: 500px;width: 100%\" src="+data[i].himgurl+"></div>")
+                }
+            }
+        })
+    }
+    getHome_img();
+
+
+
+
+
+</script>
+
+
+</html>

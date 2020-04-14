@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/header.css}">
+    <link type="text/css" th:href="@{/bootstrap/css/style.css}" rel="stylesheet" />
+    <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <title>公司简介</title>
+    <style>
+        .jianjie{
+            margin:5% 10%;
+        }
+        .icon-jianjie{
+            width: 40px;
+            position: relative; 
+            top: 8px;
+        }
+        .icon-jianjie+span{
+            font-size: 30px;
+            font-weight: 600;
+        }
+        .neirong p{
+            font-size: 18px;
+            margin-top: 20px;
+            line-height: 40px;
+        }
+        #zizhi img{
+            width: 40%;
+            margin:20px 40px;
+        }
+        #zizhi{
+            margin:5% 10%;
+        }
+    </style>
+    <script>
+        function getgaikuang(){
+            $.ajax({
+                url:'/yinxin/host/getText?text_distinction=text_gaikuang',
+                type:"GET",
+                success:function(result){
+                   var arr1=result.split('&');
+                    console.log(result);
+                    for(var a=0;a<arr1.length;a++){
+                        $("#gaikuang").append("<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+arr1[a]+"</p>")
+                    }
+
+                }
+            });
+        }
+
+
+        function getbeijing() {
+            $.ajax({
+                url:'/yinxin/host/getText?text_distinction=text_beijing',
+                type:"GET",
+                success:function(result){
+                    console.log(result);
+                    var arr2=result.split('&');
+                    console.log(result);
+                    for(var a=0;a<arr2.length;a++){
+                        $("#beijing").append("<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+arr2[a]+"</p>")
+                    }
+                }
+            })
+        }
+
+        function getzizhiimg() {
+            $.ajax({
+                url:'/yinxin/host/getOnlyImg?img_distinction=zizhi_img',
+                type:"GET",
+                dataType:"json",
+                success:function(result){
+                    for(var b=0;b<result.length;b++){
+                        $('#zizhi').append("<img src="+"http://139.159.185.154:8080"+result[b].imgurl+">")
+                    }
+                }
+            })
+        }
+        getgaikuang();
+        getzizhiimg();
+        getbeijing();
+    </script>
+</head>
+<body>
+    <div class="yx_header">
+        <a th:href="@{/}">
+            <img class="yx_logo" th:src="@{/images/yx_log.png}" alt="">
+            <p>银信金服</p>
+        </a>
+        <ul>
+            <li><a th:href="@{/}">首页</a></li>
+            <li><a th:href="@{/profile}">公司简介</a></li>
+            <li><a th:href="@{/news}">新闻动态</a></li>
+            <li><a th:href="@{/solution}">解决方案</a></li>
+            <li><a th:href="@{/about}">关于我们</a></li>
+        </ul>
+    </div>
+    <div>
+        <img style="width: 100%;margin: 0;padding: 0;" th:src="@{/images/ne_02.png}" alt="图片暂时加载不出来哦">
+    </div>
+    <div class="jianjie">
+        <div class="gaikuang">
+            <img class="icon-jianjie" th:src="@{/images/team.png}" alt="图片暂时加载不出来哦">
+            <span>公司概况</span>
+            <hr>
+            <div class="neirong" id="gaikuang">
+            </div>
+        </div>
+        <div class="gaikuang">
+            <img class="icon-jianjie" th:src="@{/images/team.png}" alt="图片暂时加载不出来哦">
+            <span>成立背景</span>
+            <hr>
+            <div class="neirong" id="beijing">
+
+            </div>
+        </div>
+        <div class="gaikuang">
+            <img class="icon-jianjie" th:src="@{/images/team.png}" alt=" ">
+            <span>公司资质</span>
+           <hr>
+           <div class="neirong" id="zizhi">
+           </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer_left">
+            <div>
+                <h3>解决方案</h3>
+                <ul>
+                    <li><a th:href="@{/solution}">资产管理系统</a></li>
+                    <li><a th:href="@{/solution}">档案管理系统</a></li>
+                    <li><a th:href="@{/solution}">大堂经理外包</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>关于公司</h3>
+                <ul>
+                    <li><a th:href="@{/profile}">公司简介</a></li>
+                    <li><a href="javascript:;">人才招聘</a></li>
+                    <li><a th:href="@{/about}">关于我们</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>其他</h3>
+                <ul>
+                    <li><a th:href="@{/news}">新闻动态</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer_right">
+            <h3>银信(成都)金融服务外包责任有限公司</h3>
+            <span>位置：</span><span>四川·成都·武侯区·人民南路四段</span><br>
+            <span>地址：</span><span>嘉云台-乙栋16楼A座</span><br>
+            <span>电话：</span><span>028-8559 5020</span><br>
+        </div>
+    </div>
+    <p class="shenming">©银信(成都)金融服务外包有限公司 Copyright(C)2019-2020</p>
+
+</body>
+</html>
+
+

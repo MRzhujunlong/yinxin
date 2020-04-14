@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理页面-上传首页图片</title>
+</head>
+<script th:src="@{/jquery/jquery-3.0.0/jquery-3.0.0.js}"></script>
+<body>
+<div style="margin: 0 auto;width: 300px;height: 60px;font-size: 30px">上传官网首页图片</div>
+<br>
+<br>
+<br>
+<form th:action="@{/host/addHome_Img}" method="post" enctype="multipart/form-data">
+    <div class="upload_box">
+        <input type="file" name="file" id="file"  accept="image/*" onchange="verificationPicFile(this);"/> <!--文件上传选择按钮-->
+        <input type="hidden" name="directory" value="master"><br>
+    </div>
+    <div><button type="submit" >确认上传</button></div>
+</form>
+<div id="preview">
+    <img style="width: 100%" height="600px" id="imghead" src=""/> <!--图片显示位置-->
+</div>
+<script type="text/javascript">
+    // 选择图片显示
+    function imgChange(obj) {
+//获取点击的文本框
+        var file = document.getElementById("file");
+        var imgUrl = window.URL.createObjectURL(file.files[0]);
+        var img = document.getElementById('imghead');
+        img.setAttribute('src', imgUrl); // 修改img标签src属性值
+
+    }
+
+
+    function verificationPicFile(file) {
+        var fileSize = 0;
+        var fileMaxSize = 1024;//1M
+        var filePath = file.value;
+        if(filePath){
+            fileSize =file.files[0].size;
+            var size = fileSize / 1024;
+            if (size > fileMaxSize) {
+                alert("文件大小不能大于1M！");
+                file.value = "";
+                return false;
+            }else if (size <= 0) {
+                alert("文件大小不能为0M！");
+                file.value = "";
+                return false;
+            }
+        }else{
+            return false;
+        }
+        imgChange(file);
+    }
+</script>
+</body>
+</html>
