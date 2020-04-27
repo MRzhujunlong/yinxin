@@ -145,5 +145,10 @@ ul{
 	height: 40px;
 	margin: 30px 800px;
 	font-size: 18px;
-
+}
+.row{
+	margin: 10px 0;
+}
+.gaikuang{
+	padding: 100px 100px;
 }

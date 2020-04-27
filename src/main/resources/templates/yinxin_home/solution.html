@@ -30,7 +30,7 @@
                         arr=item[i].charactor.ttext.split('&');
                 $(".nei-rong").append("<div class=\"row\">"
                 +"<div class=\"col-xs-3\">"
-                    +"<img src="+item[i].imgurl + " alt="+"图片暂时加载不出来哦"+">"
+                    +"<img src="+item[i].imgurl  + " style='width:100%'"+ " alt="+"图片暂时加载不出来哦"+">"
                 +"</div>"
                 +"<div class=\"col-xs-8\">"
                     +"<h3>"+arr[0]+"</h3>"
@@ -63,7 +63,7 @@
         </ul>
     </div>
     <div>
-        <img th:src="@{/images/solve.png}" style="width: 100%;margin: 0;padding: 0;" alt="">
+        <img th:src="@{/images/solve.png}" style="width:1903px;margin: 0;padding: 0;" alt="">
     </div>
     <div class="nei-rong">
             
@@ -108,5 +108,9 @@
         </div>
     </div>
     <p class="shenming">©银信(成都)金融服务外包有限公司 Copyright(C)2019-2020</p>
+    <div class="shenming">
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51010702001855" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+            <img th:src="@{/images/备案图标.png}" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#e2e2e2;">川公网安备 51010702001855号</p></a>
+    </div>
 </body>
 </html>
